@@ -46,12 +46,12 @@ export default function ViewInRoom({ paintingImage, paintingTitle }) {
       <button
         onClick={() => setIsOpen(true)}
         className="w-full text-white px-6 py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg flex items-center justify-center space-x-2"
-        style={{ backgroundColor: "#16a34a" }}
+        style={{ backgroundColor: "#d4a54e " }}
         onMouseEnter={(e) => {
-          e.target.style.backgroundColor = "#15803d"
+          e.target.style.backgroundColor = "#d4a54e "
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = "#16a34a"
+          e.target.style.backgroundColor = "#c19441 "
         }}
       >
         <Home size={20} />
