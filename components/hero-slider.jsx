@@ -56,7 +56,9 @@ export default function HeroSlider() {
         <div className="max-w-4xl px-4 animate-fade-in">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             Custom Hand-Painted
-            <span className="block text-blue-400">Artworks</span>
+            <span className="block" style={{ color: "#d4a54e" }}>
+              Artworks
+            </span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto leading-relaxed">
             Transform your space with unique, personalized paintings created just for you
@@ -64,13 +66,29 @@ export default function HeroSlider() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gallery"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+              className="text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+              style={{ backgroundColor: "#d4a54e" }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "#c19441"
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "#d4a54e"
+              }}
             >
               Explore Gallery
             </Link>
             <Link
               href="/order"
-              className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 transform hover:scale-105"
+              className="bg-transparent border-2 hover:bg-white hover:text-gray-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 transform hover:scale-105"
+              style={{ borderColor: "#d4a54e" }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "#d4a54e"
+                e.target.style.color = "white"
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "transparent"
+                e.target.style.color = "white"
+              }}
             >
               Order Custom Art
             </Link>

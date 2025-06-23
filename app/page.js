@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import HeroSlider from "../components/hero-slider"
 import PaintingCard from "../components/painting-card"
@@ -7,17 +9,18 @@ import { Palette, Award, Users, Clock } from "lucide-react"
 
 export default function HomePage() {
   const featuredPaintings = paintings.filter((painting) => painting.featured)
-// This could be pre-rendered at build time since paintings data is static
+
   return (
     <div>
       <HeroSlider />
 
+      {/* Stats Section - Changed blue to golden */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="group">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors duration-200">
-                <Palette className="w-8 h-8 text-blue-600" />
+              <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-200 transition-colors duration-200">
+                <Palette className="w-8 h-8" style={{ color: "#d4a54e" }} />
               </div>
               <h3 className="text-3xl font-bold text-gray-900 mb-2">500+</h3>
               <p className="text-gray-600">Artworks Created</p>
@@ -47,7 +50,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* Order Section - Changed blue gradient to golden */}
+      <section className="py-20" style={{ background: "linear-gradient(135deg, #fef3e2 0%, #fdf2e9 100%)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">Order Your Custom Painting</h2>
@@ -59,7 +63,7 @@ export default function HomePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">🎨</span>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Custom Design</h3>
@@ -85,7 +89,17 @@ export default function HomePage() {
 
             <Link
               href="/order"
-              className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-4 rounded-xl text-xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+              className="inline-block text-white px-10 py-4 rounded-xl text-xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+              style={{
+                backgroundColor: "#d4a54e",
+                background: "linear-gradient(135deg, #d4a54e 0%, #c19441 100%)",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = "linear-gradient(135deg, #c19441 0%, #b8873a 100%)"
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = "linear-gradient(135deg, #d4a54e 0%, #c19441 100%)"
+              }}
             >
               Order Now
             </Link>
@@ -93,6 +107,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Featured Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -112,7 +127,14 @@ export default function HomePage() {
           <div className="text-center">
             <Link
               href="/gallery"
-              className="inline-block bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+              className="inline-block text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+              style={{ backgroundColor: "#d4a54e" }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "#c19441"
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "#d4a54e"
+              }}
             >
               View Full Gallery
             </Link>
@@ -122,6 +144,7 @@ export default function HomePage() {
 
       <Testimonials />
 
+      {/* Process Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -160,7 +183,16 @@ export default function HomePage() {
             ].map((item, index) => (
               <div key={index} className="text-center group">
                 <div className="relative mb-6">
-                  <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold group-hover:bg-blue-700 transition-colors duration-200">
+                  <div
+                    className="w-20 h-20 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold transition-colors duration-200"
+                    style={{ backgroundColor: "#d4a54e" }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = "#c19441"
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "#d4a54e"
+                    }}
+                  >
                     {item.step}
                   </div>
                   <div className="text-4xl mb-4">{item.icon}</div>

@@ -60,8 +60,11 @@ export default function OrderPage() {
         {!orderType ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <div className="bg-white rounded-2xl shadow-xl p-8 text-center hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <MessageCircle className="w-10 h-10 text-blue-600" />
+              <div
+                className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+                style={{ backgroundColor: "#fef3e2" }}
+              >
+                <MessageCircle className="w-10 h-10" style={{ color: "#d4a54e" }} />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Discuss Your Vision</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
@@ -76,7 +79,14 @@ export default function OrderPage() {
               </ul>
               <button
                 onClick={() => setOrderType("contact")}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105"
+                className="w-full text-white px-6 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105"
+                style={{ backgroundColor: "#d4a54e" }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#c19441"
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = "#d4a54e"
+                }}
               >
                 Start Discussion
               </button>
@@ -97,12 +107,12 @@ export default function OrderPage() {
                 <li>✓ Quick turnaround</li>
                 <li>✓ Direct communication</li>
               </ul>
-              <button
-                onClick={() => setOrderType("upload")}
-                className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105"
-              >
-                Upload & Order
-              </button>
+            <button
+  onClick={() => setOrderType("upload")}
+  className="w-full bg-[#d4a54e] hover:bg-[#c19545] text-white px-6 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105"
+>
+  Upload & Order
+</button>
             </div>
           </div>
         ) : (
@@ -170,8 +180,16 @@ export default function OrderPage() {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 transition-all duration-200"
                     placeholder="Enter your full name"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#d4a54e"
+                      e.target.style.boxShadow = "0 0 0 2px rgba(212, 165, 78, 0.2)"
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#d1d5db"
+                      e.target.style.boxShadow = "none"
+                    }}
                   />
                 </div>
 
@@ -186,8 +204,16 @@ export default function OrderPage() {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 transition-all duration-200"
                     placeholder="your@email.com"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#d4a54e"
+                      e.target.style.boxShadow = "0 0 0 2px rgba(212, 165, 78, 0.2)"
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#d1d5db"
+                      e.target.style.boxShadow = "none"
+                    }}
                   />
                 </div>
               </div>
@@ -202,8 +228,16 @@ export default function OrderPage() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-3 transition-all duration-200"
                   placeholder="+1 (555) 123-4567"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#d4a54e"
+                    e.target.style.boxShadow = "0 0 0 2px rgba(212, 165, 78, 0.2)"
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#d1d5db"
+                    e.target.style.boxShadow = "none"
+                  }}
                 />
               </div>
 
@@ -217,7 +251,15 @@ export default function OrderPage() {
                     name="size"
                     value={formData.size}
                     onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 transition-all duration-200"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#d4a54e"
+                      e.target.style.boxShadow = "0 0 0 2px rgba(212, 165, 78, 0.2)"
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#d1d5db"
+                      e.target.style.boxShadow = "none"
+                    }}
                   >
                     <option value="">Select size</option>
                     <option value="16x20">16" x 20" - $300-400</option>
@@ -237,7 +279,15 @@ export default function OrderPage() {
                     name="budget"
                     value={formData.budget}
                     onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 transition-all duration-200"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#d4a54e"
+                      e.target.style.boxShadow = "0 0 0 2px rgba(212, 165, 78, 0.2)"
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#d1d5db"
+                      e.target.style.boxShadow = "none"
+                    }}
                   >
                     <option value="">Select budget</option>
                     <option value="300-500">$300 - $500</option>
@@ -256,7 +306,15 @@ export default function OrderPage() {
                     name="timeline"
                     value={formData.timeline}
                     onChange={handleInputChange}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 transition-all duration-200"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#d4a54e"
+                      e.target.style.boxShadow = "0 0 0 2px rgba(212, 165, 78, 0.2)"
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#d1d5db"
+                      e.target.style.boxShadow = "none"
+                    }}
                   >
                     <option value="">Select timeline</option>
                     <option value="flexible">Flexible</option>
@@ -268,16 +326,37 @@ export default function OrderPage() {
               </div>
 
               {orderType === "upload" && (
-                <div>
+
+                <div className="bg-[#d4a54e] text-white p-4 rounded-md">
                   <label className="block text-sm font-medium text-gray-700 mb-2">Upload Reference Image</label>
-                  <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-blue-400 transition-colors duration-200 bg-gray-50">
-                    <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                    <p className="text-gray-600 mb-2">Drag and drop your image here, or click to browse</p>
+                  <div
+                    className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center transition-colors duration-200 bg-gray-50"
+                    style={{
+                      "--hover-border": "#d4a54e",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.borderColor = "#d4a54e"
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.borderColor = "#d1d5db"
+                    }}
+                  >
+                    <Upload className="w-12 h-12 mx-auto mb-4" style={{ color: "#d4a54e" }} />
+                    <p className="text-gray-600 mb-2" style={{ color: "#d4a54e" }}>
+                      Drag and drop your image here, or click to browse
+                    </p>
                     <p className="text-sm text-gray-500 mb-4">Supports JPG, PNG, GIF up to 10MB</p>
                     <input type="file" accept="image/*" className="hidden" id="file-upload" />
                     <label
                       htmlFor="file-upload"
-                      className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg cursor-pointer transition-colors duration-200 font-semibold"
+                      className="inline-block text-white px-6 py-3 rounded-lg cursor-pointer transition-colors duration-200 font-semibold"
+                      style={{ backgroundColor: "#d4a54e" }}
+                      onMouseEnter={(e) => {
+                        e.target.style.backgroundColor = "#c19441"
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.backgroundColor = "#d4a54e"
+                      }}
                     >
                       Choose File
                     </label>
@@ -300,14 +379,37 @@ export default function OrderPage() {
                       ? "Describe your ideas, style preferences, color schemes, subject matter, or any specific requirements. The more details you provide, the better we can understand your vision..."
                       : "Provide any additional details about your reference image, modifications needed, color preferences, or special requirements..."
                   }
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-3 transition-all duration-200 resize-none"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#d4a54e"
+                    e.target.style.boxShadow = "0 0 0 2px rgba(212, 165, 78, 0.2)"
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#d1d5db"
+                    e.target.style.boxShadow = "none"
+                  }}
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-500 text-white px-6 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed"
+                className="w-full text-white px-6 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed"
+                style={{
+                  background: isSubmitting
+                    ? "linear-gradient(135deg, #9ca3af 0%, #6b7280 100%)"
+                    : "linear-gradient(135deg, #d4a54e 0%, #c19441 100%)",
+                }}
+                onMouseEnter={(e) => {
+                  if (!isSubmitting) {
+                    e.target.style.background = "linear-gradient(135deg, #c19441 0%, #b8873a 100%)"
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isSubmitting) {
+                    e.target.style.background = "linear-gradient(135deg, #d4a54e 0%, #c19441 100%)"
+                  }
+                }}
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center">
@@ -326,14 +428,30 @@ export default function OrderPage() {
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Prefer Direct Contact?</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="group">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors duration-200">
-                <Mail className="w-8 h-8 text-blue-600" />
+              <div
+                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:transition-colors duration-200"
+                style={{ backgroundColor: "#fef3e2" }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#fdf2e9"
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = "#fef3e2"
+                }}
+              >
+                <Mail className="w-8 h-8" style={{ color: "#d4a54e" }} />
               </div>
               <h4 className="font-semibold text-gray-900 mb-2">Email</h4>
               <p className="text-gray-600 mb-3">For detailed inquiries</p>
               <a
                 href="mailto:sarah@artstudio.com"
-                className="text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+                className="font-semibold transition-colors duration-200"
+                style={{ color: "#d4a54e" }}
+                onMouseEnter={(e) => {
+                  e.target.style.color = "#c19441"
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.color = "#d4a54e"
+                }}
               >
                 sarah@artstudio.com
               </a>
@@ -360,7 +478,7 @@ export default function OrderPage() {
               <h4 className="font-semibold text-gray-900 mb-2">Instagram</h4>
               <p className="text-gray-600 mb-3">Latest works & updates</p>
               <a
-                href="https://instagram.com/artstudio_paintings"
+                href="https://instagram.com/Mirzzayy_"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-purple-600 hover:text-purple-700 font-semibold transition-colors duration-200"

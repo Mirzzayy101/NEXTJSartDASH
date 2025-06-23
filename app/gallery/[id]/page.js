@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -5,10 +7,9 @@ import ViewInRoom from "../../../components/view-in-room"
 import { paintings } from "../../../data/paintings"
 import { ArrowLeft, Palette, Ruler, Tag, Calendar, Share2, Heart } from "lucide-react"
 
-
 export default function PaintingPage({ params }) {
   const painting = paintings.find((p) => p.id === params.id)
-//server side render as painting data is ready when page loads
+
   if (!painting) {
     notFound()
   }
@@ -20,7 +21,14 @@ export default function PaintingPage({ params }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/gallery"
-          className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-8 transition-colors duration-200 group"
+          className="inline-flex items-center mb-8 transition-colors duration-200 group"
+          style={{ color: "#d4a54e" }}
+          onMouseEnter={(e) => {
+            e.target.style.color = "#c19441"
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.color = "#d4a54e"
+          }}
         >
           <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
           Back to Gallery
@@ -58,7 +66,10 @@ export default function PaintingPage({ params }) {
           <div className="space-y-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
+                <span
+                  className="text-white px-3 py-1 rounded-full text-sm font-semibold"
+                  style={{ backgroundColor: "#d4a54e" }}
+                >
                   {painting.category}
                 </span>
                 {painting.featured && (
@@ -71,7 +82,9 @@ export default function PaintingPage({ params }) {
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{painting.title}</h1>
 
               <div className="flex items-center space-x-6 mb-6">
-                <p className="text-3xl font-bold text-blue-600">${painting.price}</p>
+                <p className="text-3xl font-bold" style={{ color: "#d4a54e" }}>
+                  ${painting.price}
+                </p>
                 <span
                   className={`px-4 py-2 rounded-full font-semibold ${
                     painting.status === "available" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
@@ -88,8 +101,8 @@ export default function PaintingPage({ params }) {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Artwork Details</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex items-center space-x-3">
-                  <div className="bg-blue-100 p-2 rounded-lg">
-                    <Palette className="w-5 h-5 text-blue-600" />
+                  <div className="p-2 rounded-lg" style={{ backgroundColor: "#fef3e2" }}>
+                    <Palette className="w-5 h-5" style={{ color: "#d4a54e" }} />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Medium</p>
@@ -134,7 +147,16 @@ export default function PaintingPage({ params }) {
                 <>
                   <Link
                     href="/order"
-                    className="block w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-center px-6 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+                    className="block w-full text-white text-center px-6 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+                    style={{
+                      background: "linear-gradient(135deg, #d4a54e 0%, #c19441 100%)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.background = "linear-gradient(135deg, #c19441 0%, #b8873a 100%)"
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.background = "linear-gradient(135deg, #d4a54e 0%, #c19441 100%)"
+                    }}
                   >
                     Purchase This Painting - ${painting.price}
                   </Link>
@@ -152,7 +174,7 @@ export default function PaintingPage({ params }) {
               )}
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
+            <div className="rounded-2xl p-8" style={{ backgroundColor: "#fef3e2" }}>
               <h4 className="font-bold text-gray-900 mb-3 text-lg">💡 Interested in a custom piece?</h4>
               <p className="text-gray-700 mb-6 leading-relaxed">
                 I can create a similar painting tailored to your preferences, size requirements, and color scheme. Each
@@ -160,7 +182,14 @@ export default function PaintingPage({ params }) {
               </p>
               <Link
                 href="/order"
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200 group"
+                className="inline-flex items-center font-semibold transition-colors duration-200 group"
+                style={{ color: "#d4a54e" }}
+                onMouseEnter={(e) => {
+                  e.target.style.color = "#c19441"
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.color = "#d4a54e"
+                }}
               >
                 Start Custom Order
                 <ArrowLeft className="w-4 h-4 ml-2 rotate-180 group-hover:translate-x-1 transition-transform duration-200" />
@@ -188,10 +217,19 @@ export default function PaintingPage({ params }) {
                   </div>
                   <div className="p-6">
                     <h4 className="font-bold text-gray-900 mb-2">{relatedPainting.title}</h4>
-                    <p className="text-blue-600 font-semibold mb-4">${relatedPainting.price}</p>
+                    <p className="font-semibold mb-4" style={{ color: "#d4a54e" }}>
+                      ${relatedPainting.price}
+                    </p>
                     <Link
                       href={`/gallery/${relatedPainting.id}`}
-                      className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+                      className="block w-full text-white text-center px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+                      style={{ backgroundColor: "#d4a54e" }}
+                      onMouseEnter={(e) => {
+                        e.target.style.backgroundColor = "#c19441"
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.backgroundColor = "#d4a54e"
+                      }}
                     >
                       View Details
                     </Link>

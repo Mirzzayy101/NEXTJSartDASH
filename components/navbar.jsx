@@ -20,7 +20,14 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           <Link
             href="/"
-            className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors duration-200"
+            className="text-2xl font-bold text-gray-900 transition-colors duration-200"
+            style={{ color: "#d4a54e" }}
+            onMouseEnter={(e) => {
+              e.target.style.color = "#c19441"
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.color = "#d4a54e"
+            }}
           >
             ArtStudio
           </Link>
@@ -30,10 +37,22 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium relative group"
+                className="text-gray-700 transition-colors duration-200 font-medium relative group"
+                style={{
+                  "--hover-color": "#d4a54e",
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.color = "#d4a54e"
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.color = "#374151"
+                }}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full"></span>
+                <span
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-200 group-hover:w-full"
+                  style={{ backgroundColor: "#d4a54e" }}
+                ></span>
               </Link>
             ))}
           </div>
@@ -41,7 +60,13 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-600 transition-colors duration-200 p-2 rounded-md hover:bg-gray-100"
+              className="text-gray-700 transition-colors duration-200 p-2 rounded-md hover:bg-gray-100"
+              onMouseEnter={(e) => {
+                e.target.style.color = "#d4a54e"
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = "#374151"
+              }}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -55,8 +80,14 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200 font-medium rounded-md"
+                  className="block px-3 py-2 text-gray-700 hover:bg-gray-50 transition-colors duration-200 font-medium rounded-md"
                   onClick={() => setIsOpen(false)}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = "#d4a54e"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = "#374151"
+                  }}
                 >
                   {link.label}
                 </Link>

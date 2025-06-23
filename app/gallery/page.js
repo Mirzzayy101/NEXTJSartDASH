@@ -48,7 +48,15 @@ export default function GalleryPage() {
                 placeholder="Search paintings..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg transition-all duration-200"
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#d4a54e"
+                  e.target.style.boxShadow = "0 0 0 2px rgba(212, 165, 78, 0.2)"
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#d1d5db"
+                  e.target.style.boxShadow = "none"
+                }}
               />
             </div>
 
@@ -59,7 +67,15 @@ export default function GalleryPage() {
                 <select
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="border border-gray-300 rounded-lg px-4 py-3 transition-all duration-200"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#d4a54e"
+                    e.target.style.boxShadow = "0 0 0 2px rgba(212, 165, 78, 0.2)"
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#d1d5db"
+                    e.target.style.boxShadow = "none"
+                  }}
                 >
                   {categories.map((category) => (
                     <option key={category} value={category}>
@@ -72,7 +88,15 @@ export default function GalleryPage() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="border border-gray-300 rounded-lg px-4 py-3 transition-all duration-200"
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#d4a54e"
+                  e.target.style.boxShadow = "0 0 0 2px rgba(212, 165, 78, 0.2)"
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#d1d5db"
+                  e.target.style.boxShadow = "none"
+                }}
               >
                 {statuses.map((status) => (
                   <option key={status} value={status}>
@@ -87,16 +111,18 @@ export default function GalleryPage() {
               <button
                 onClick={() => setViewMode("grid")}
                 className={`p-2 rounded-md transition-all duration-200 ${
-                  viewMode === "grid" ? "bg-white shadow-sm text-blue-600" : "text-gray-500 hover:text-gray-700"
+                  viewMode === "grid" ? "bg-white shadow-sm" : "text-gray-500 hover:text-gray-700"
                 }`}
+                style={viewMode === "grid" ? { color: "#d4a54e" } : {}}
               >
                 <Grid size={20} />
               </button>
               <button
                 onClick={() => setViewMode("list")}
                 className={`p-2 rounded-md transition-all duration-200 ${
-                  viewMode === "list" ? "bg-white shadow-sm text-blue-600" : "text-gray-500 hover:text-gray-700"
+                  viewMode === "list" ? "bg-white shadow-sm" : "text-gray-500 hover:text-gray-700"
                 }`}
+                style={viewMode === "list" ? { color: "#d4a54e" } : {}}
               >
                 <List size={20} />
               </button>
@@ -132,7 +158,14 @@ export default function GalleryPage() {
                 setStatusFilter("all")
                 setSearchTerm("")
               }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+              className="text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+              style={{ backgroundColor: "#d4a54e" }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "#c19441"
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "#d4a54e"
+              }}
             >
               Clear Filters
             </button>
@@ -141,14 +174,20 @@ export default function GalleryPage() {
 
         {/* Call to Action */}
         {filteredPaintings.length > 0 && (
-          <div className="mt-16 text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
+          <div
+            className="mt-16 text-center rounded-2xl p-12 text-white"
+            style={{
+              background: "linear-gradient(135deg, #d4a54e 0%, #c19441 100%)",
+            }}
+          >
             <h3 className="text-3xl font-bold mb-4">Don't see what you're looking for?</h3>
             <p className="text-xl mb-8 opacity-90">
               Commission a custom painting tailored to your exact vision and preferences.
             </p>
             <Link
               href="/order"
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 transform hover:scale-105"
+              className="inline-block bg-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 transform hover:scale-105"
+              style={{ color: "#d4a54e" }}
             >
               Commission Custom Art
             </Link>

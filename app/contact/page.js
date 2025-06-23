@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Mail, Phone, MessageCircle, MapPin, Clock, Palette, Award, Users, Heart } from "lucide-react"
@@ -31,8 +33,8 @@ export default function ContactPage() {
 
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <div className="flex items-center mb-6">
-                <div className="bg-blue-100 p-3 rounded-lg mr-4">
-                  <Palette className="w-6 h-6 text-blue-600" />
+                <div className="p-3 rounded-lg mr-4" style={{ backgroundColor: "#fef3e2" }}>
+                  <Palette className="w-6 h-6" style={{ color: "#d4a54e" }} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">My Artistic Journey</h3>
               </div>
@@ -54,8 +56,8 @@ export default function ContactPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-8">Artist Profile</h3>
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="bg-blue-100 p-2 rounded-lg mr-4">
-                    <MapPin className="w-5 h-5 text-blue-600" />
+                  <div className="p-2 rounded-lg mr-4" style={{ backgroundColor: "#fef3e2" }}>
+                    <MapPin className="w-5 h-5" style={{ color: "#d4a54e" }} />
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Based in</p>
@@ -97,8 +99,11 @@ export default function ContactPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white rounded-xl shadow-lg p-6 text-center">
-                <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Palette className="w-6 h-6 text-blue-600" />
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3"
+                  style={{ backgroundColor: "#fef3e2" }}
+                >
+                  <Palette className="w-6 h-6" style={{ color: "#d4a54e" }} />
                 </div>
                 <h4 className="text-2xl font-bold text-gray-900 mb-1">500+</h4>
                 <p className="text-gray-600 text-sm">Artworks Created</p>
@@ -129,23 +134,38 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
+            <div
+              className="rounded-2xl p-8"
+              style={{ background: "linear-gradient(135deg, #fef3e2 0%, #fdf2e9 100%)" }}
+            >
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Why Choose Custom Art?</h4>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  <span
+                    className="w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"
+                    style={{ backgroundColor: "#d4a54e" }}
+                  ></span>
                   <span>Each piece is uniquely crafted for you and your space</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  <span
+                    className="w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"
+                    style={{ backgroundColor: "#d4a54e" }}
+                  ></span>
                   <span>Premium quality materials and professional techniques</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  <span
+                    className="w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"
+                    style={{ backgroundColor: "#d4a54e" }}
+                  ></span>
                   <span>Personal collaboration throughout the entire process</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  <span
+                    className="w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"
+                    style={{ backgroundColor: "#d4a54e" }}
+                  ></span>
                   <span>Lifetime satisfaction guarantee and support</span>
                 </li>
               </ul>
@@ -163,14 +183,30 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-all duration-200 group">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors duration-200">
-                <Mail className="w-8 h-8 text-blue-600" />
+              <div
+                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:transition-colors duration-200"
+                style={{ backgroundColor: "#fef3e2" }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#fdf2e9"
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = "#fef3e2"
+                }}
+              >
+                <Mail className="w-8 h-8" style={{ color: "#d4a54e" }} />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Email</h3>
               <p className="text-gray-600 mb-4">For detailed inquiries and project discussions</p>
               <a
                 href="mailto:sarah@artstudio.com"
-                className="text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200 text-lg"
+                className="font-semibold transition-colors duration-200 text-lg"
+                style={{ color: "#d4a54e" }}
+                onMouseEnter={(e) => {
+                  e.target.style.color = "#c19441"
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.color = "#d4a54e"
+                }}
               >
                 sarah@artstudio.com
               </a>
@@ -210,7 +246,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-12">
+        <div className="rounded-2xl p-12" style={{ background: "linear-gradient(135deg, #fef3e2 0%, #fdf2e9 100%)" }}>
           <h3 className="text-3xl font-bold text-gray-900 mb-12 text-center">My Creative Process</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -219,33 +255,38 @@ export default function ContactPage() {
                 title: "Consultation",
                 description: "We discuss your vision, preferences, and requirements in detail",
                 icon: "💬",
-                color: "blue",
               },
               {
                 step: "2",
                 title: "Sketch & Approval",
                 description: "I create initial sketches for your review and feedback",
                 icon: "✏️",
-                color: "green",
               },
               {
                 step: "3",
                 title: "Painting",
                 description: "I bring your vision to life with careful attention to every detail",
                 icon: "🎨",
-                color: "purple",
               },
               {
                 step: "4",
                 title: "Delivery",
                 description: "Your finished artwork is carefully packaged and delivered",
                 icon: "📦",
-                color: "orange",
               },
             ].map((item, index) => (
               <div key={index} className="text-center group">
                 <div className="relative mb-8">
-                  <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold group-hover:bg-blue-700 transition-colors duration-200 shadow-lg">
+                  <div
+                    className="w-16 h-16 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold transition-colors duration-200 shadow-lg"
+                    style={{ backgroundColor: "#d4a54e" }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = "#c19441"
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "#d4a54e"
+                    }}
+                  >
                     {item.step}
                   </div>
                   <div className="text-4xl mb-4">{item.icon}</div>
@@ -262,7 +303,14 @@ export default function ContactPage() {
           <div className="text-center mt-12">
             <Link
               href="/order"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+              className="inline-block text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+              style={{ backgroundColor: "#d4a54e" }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "#c19441"
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "#d4a54e"
+              }}
             >
               Start Your Custom Order
             </Link>

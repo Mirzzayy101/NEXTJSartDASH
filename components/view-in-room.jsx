@@ -45,7 +45,14 @@ export default function ViewInRoom({ paintingImage, paintingTitle }) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg flex items-center justify-center space-x-2"
+        className="w-full text-white px-6 py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg flex items-center justify-center space-x-2"
+        style={{ backgroundColor: "#16a34a" }}
+        onMouseEnter={(e) => {
+          e.target.style.backgroundColor = "#15803d"
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.backgroundColor = "#16a34a"
+        }}
       >
         <Home size={20} />
         <span>View in Room</span>
@@ -56,7 +63,10 @@ export default function ViewInRoom({ paintingImage, paintingTitle }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
       <div className="bg-white rounded-2xl max-w-6xl w-full max-h-[95vh] overflow-y-auto shadow-2xl">
-        <div className="flex justify-between items-center p-6 border-b bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div
+          className="flex justify-between items-center p-6 border-b"
+          style={{ background: "linear-gradient(135deg, #fef3e2 0%, #fdf2e9 100%)" }}
+        >
           <div>
             <h3 className="text-2xl font-bold text-gray-900">Room Preview</h3>
             <p className="text-gray-600">See how "{paintingTitle}" looks in your space</p>
@@ -81,9 +91,10 @@ export default function ViewInRoom({ paintingImage, paintingTitle }) {
                     onClick={() => setSelectedRoom(room.id)}
                     className={`p-4 rounded-xl font-medium transition-all duration-200 border-2 ${
                       selectedRoom === room.id
-                        ? "bg-blue-600 text-white border-blue-600 shadow-lg transform scale-105"
+                        ? "text-white shadow-lg transform scale-105"
                         : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100 hover:border-gray-300"
                     }`}
+                    style={selectedRoom === room.id ? { backgroundColor: "#d4a54e", borderColor: "#d4a54e" } : {}}
                   >
                     <IconComponent size={24} className="mx-auto mb-2" />
                     <div className="text-sm font-semibold">{room.name}</div>
@@ -134,7 +145,14 @@ export default function ViewInRoom({ paintingImage, paintingTitle }) {
                   onClick={() =>
                     setSelectedRoom(rooms[(rooms.findIndex((r) => r.id === selectedRoom) + 1) % rooms.length].id)
                   }
-                  className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition-all duration-200"
+                  className="text-white p-2 rounded-full transition-all duration-200"
+                  style={{ backgroundColor: "#d4a54e" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = "#c19441"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = "#d4a54e"
+                  }}
                 >
                   <RotateCcw size={16} />
                 </button>
@@ -142,7 +160,7 @@ export default function ViewInRoom({ paintingImage, paintingTitle }) {
             </div>
           </div>
 
-          <div className="mt-6 bg-blue-50 rounded-xl p-6">
+          <div className="mt-6 rounded-xl p-6" style={{ backgroundColor: "#fef3e2" }}>
             <h5 className="font-semibold text-gray-900 mb-2">💡 Visualization Tips</h5>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>• This is a simulated preview - actual size may vary based on your wall dimensions</li>

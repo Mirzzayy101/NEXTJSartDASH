@@ -23,7 +23,10 @@ export default function Testimonials() {
               className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="absolute -top-4 left-8 bg-blue-600 text-white p-3 rounded-full">
+              <div
+                className="absolute -top-4 left-8 text-white p-3 rounded-full"
+                style={{ backgroundColor: "#d4a54e" }}
+              >
                 <Quote size={20} />
               </div>
 
@@ -37,7 +40,10 @@ export default function Testimonials() {
               <p className="text-gray-700 mb-6 italic text-lg leading-relaxed">"{testimonial.text}"</p>
 
               <div className="flex items-center">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden mr-4 ring-2 ring-blue-100">
+                <div
+                  className="relative w-14 h-14 rounded-full overflow-hidden mr-4"
+                  style={{ border: "2px solid #fef3e2" }}
+                >
                   <Image
                     src={testimonial.image || "/placeholder.svg"}
                     alt={testimonial.name}
@@ -47,7 +53,9 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <p className="font-bold text-gray-900 text-lg">{testimonial.name}</p>
-                  <p className="text-blue-600 font-medium">{testimonial.paintingTitle}</p>
+                  <p className="font-medium" style={{ color: "#d4a54e" }}>
+                    {testimonial.paintingTitle}
+                  </p>
                 </div>
               </div>
 
@@ -60,7 +68,14 @@ export default function Testimonials() {
           <p className="text-lg text-gray-600 mb-6">Ready to join our happy clients?</p>
           <Link
             href="/order"
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+            className="inline-block text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+            style={{ backgroundColor: "#d4a54e" }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "#c19441"
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = "#d4a54e"
+            }}
           >
             Start Your Custom Order
           </Link>
